@@ -1,0 +1,24 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.ehcache.org/v3"
+        xsi:schemaLocation="http://www.ehcache.org/v3 http://www.ehcache.org/schema/ehcache-core-3.0.xsd">
+
+    <!-- Default cache template -->
+    <cache-template name="default">
+        <expiry>
+            <tti unit="minutes">10</tti>
+        </expiry>
+        <heap unit="entries">10000</heap>
+    </cache-template>
+
+    <!-- Specific region matching your User entity mapping -->
+    <cache alias="userCache" uses-template="default">
+        <heap unit="entries">1000</heap>
+    </cache>
+
+    <!-- Default query results region -->
+    <cache alias="default-query-results-region" uses-template="default"/>
+
+    <!-- Default update timestamps region -->
+    <cache alias="default-update-timestamps-region" uses-template="default"/>
+
+</config>
